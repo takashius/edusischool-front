@@ -38,7 +38,7 @@ const Sidebar = ({ }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        `absolute left-0 top-0 z-9999 flex h-screen w-20 flex-col overflow-y-hidden bg-black duration-300 ease-linear  dark:bg-boxdark lg:static lg:translate-x-0 `,
+        `absolute left-0 top-0 z-9999 flex h-screen w-20 flex-col overflow-y-hidden bg-zinc-400 duration-300 ease-linear  dark:bg-boxdark lg:static lg:translate-x-0 `,
         {
           "w-70": isSidebarOpen,
         },
