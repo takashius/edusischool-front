@@ -1,10 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ErrorAlert = (params: any) => {
   const { message } = params;
+  console.log(JSON.stringify(message, null, 2))
   const [errorVisible, isErrorVisible] = useState<boolean>(true);
+  const [textMessage, setTextMessage] = useState<string>();
+
+  useEffect(() => {
+    if (typeof message === 'object') {
+      let text = '<ul>';
+      for (const items in message) {
+        text += `<li><strong>${items}</strong>: ${message[items]}</li>`;
+      }
+      text += '</ul>';
+      setTextMessage(text);
+    } else if (typeof message === 'string') {
+      setTextMessage(message);
+    }
+  }, [message])
 
   return <span
     className={`${!errorVisible && "hidden"} flex w-full border-l-6 mb-5 border-[#F87171] bg-[#F87171] bg-opacity-[15%] px-7 py-4 shadow-md dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-4`}>
@@ -25,9 +40,8 @@ const ErrorAlert = (params: any) => {
       </svg>
     </div>
     <div className="w-full">
-      <h5 className="mb-3 font-semibold text-[#B45454]">
-        {message}
-      </h5>
+      <p className="mb-3 font-semibold text-[#B45454]" dangerouslySetInnerHTML={{ __html: textMessage! }}>
+      </p>
     </div>
   </span>;
 }

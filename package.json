@@ -16,6 +16,7 @@
     "@radix-ui/themes": "^3.0.3",
     "@react-jvectormap/core": "^1.0.4",
     "@react-jvectormap/unitedstates": "^1.0.1",
+    "@remixicon/react": "^4.2.0",
     "@tanstack/react-query": "^5.34.2",
     "@tremor/react": "^3.11.0",
     "@types/node": "20.4.8",
@@ -28,6 +29,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.46.0",
     "eslint-config-next": "latest",
+    "js-cookie": "^3.0.5",
     "jsvectormap": "^1.5.3",
     "lucide-react": "^0.292.0",
     "next": "latest",
@@ -35,6 +37,7 @@
     "react": "latest",
     "react-apexcharts": "^1.4.1",
     "react-dom": "latest",
+    "react-hook-form": "^7.51.4",
     "react-jvectormap": "^0.0.16",
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "3.3.3",
@@ -44,6 +47,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6"
   }

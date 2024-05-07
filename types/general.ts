@@ -11,3 +11,12 @@ export interface Account {
 export interface CompanyAccount {
     selected: boolean
 }
+
+export interface Register {
+    name?: string;
+    email?: string;
+    password?: string;
+    repeatPassword?: string;
+    companyName?: string;
+    docId?: string;
+}

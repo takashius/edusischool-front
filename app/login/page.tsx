@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { TextInput, Button } from '@tremor/react';
+import { TextInput } from '@tremor/react';
 import { useLogin } from "@/api/auth";
 import Loader from "@/components/common/Loader";
 import { RiUser3Fill } from '@remixicon/react';
@@ -58,7 +58,6 @@ const SignIn: React.FC = () => {
             {responseQuery.isLoading ?
               <Loader /> :
               <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-                <span className="mb-1.5 block font-medium">Start for free</span>
                 <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                   Ingresar
                 </h2>

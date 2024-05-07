@@ -3,7 +3,7 @@ import urlJoin from "url-join";
 
 const DEBUG = true;
 const locale = 'es';
-const apiUrl = 'http://localhost:8080/';
+const apiUrl = process.env.API_URL;
 
 const ERDEAxios = axios.create();
 
@@ -23,7 +23,7 @@ ERDEAxios.interceptors.request.use(
       console.log('Content-type', "application/json");
       config.headers["Content-type"] = "application/json";
     }
-    config.url = urlJoin(apiUrl, `${config.url}`);
+    config.url = urlJoin(apiUrl!, `${config.url}`);
     if (DEBUG) {
       console.log("URL", config.method, config.url);
       config.data && console.log("DATA", config.data);
