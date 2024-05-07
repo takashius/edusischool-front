@@ -1,4 +1,7 @@
-import { ReactQueryProvider } from "./react-query-provider"
+import { ReactQueryProvider } from "./react-query-provider";
+import "./globals.css";
+import "./data-tables-css.css";
+import "./satoshi.css";
 
 export default function RootLayout({
   children,
