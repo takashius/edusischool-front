@@ -1,5 +1,6 @@
 import axios from "axios";
 import urlJoin from "url-join";
+import Cookies from "js-cookie";
 
 const DEBUG = true;
 const locale = 'es';
@@ -10,8 +11,8 @@ const ERDEAxios = axios.create();
 // interceptor for outgoing requests
 ERDEAxios.interceptors.request.use(
   async (config) => {
-    const userToken = localStorage.getItem("userToken");
     const contentType = localStorage.getItem("contentType");
+    const userToken = Cookies.get("authToken");
     if (userToken) {
       config.headers["Authorization"] = "Bearer " + userToken;
     }
@@ -56,7 +57,7 @@ ERDEAxios.interceptors.response.use(
     const errorMsg = JSON.stringify(error.message);
 
     if (DEBUG) {
-      console.log("API ERROR", errorMsg);
+      console.log("API ERROR", errorMsg, apiUrl);
     }
 
     if (error?.response?.status) {

@@ -5,7 +5,6 @@ import "../satoshi.css";
 import { useState, useEffect } from "react";
 import Loader from "@/components/common/Loader";
 import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
 
 export default function RootLayout({
   children,

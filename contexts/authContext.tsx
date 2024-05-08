@@ -20,7 +20,8 @@ export default function AuthContextProvider({
   children: ReactNode;
 }) {
   const login = useCallback(function (authToken: string) {
-    Cookies.set("authToken", JSON.stringify(authToken));
+    console.log('LOGIN CONTEXT', authToken)
+    Cookies.set("authToken", authToken);
   }, []);
 
   const logout = useCallback(function () {

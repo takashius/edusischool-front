@@ -27,6 +27,7 @@ export const useLogin = (email: String, password: String) => {
     enabled: false,
     retry: false,
     queryFn: () => {
+      console.log('useLogin', email, password);
       return ERDEAxios.post("/user/login", JSON.stringify({ email, password }));
     },
   });

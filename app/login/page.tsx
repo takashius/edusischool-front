@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TextInput } from '@tremor/react';
 import { useLogin } from "@/api/auth";
@@ -8,6 +9,7 @@ import { RiUser3Fill } from '@remixicon/react';
 import { ValidInput } from "@/types/validation";
 import { ErrorAlert } from "@/components/Alerts/Alert";
 import { ImageLogin } from "@/components/Images/ImageSvg";
+import Cookies from "js-cookie";
 
 const SignIn: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -15,6 +17,7 @@ const SignIn: React.FC = () => {
   const [validUsername, setValidUsername] = useState<ValidInput>({ error: false, message: '' });
   const [validPass, setValidPass] = useState<ValidInput>({ error: false, message: '' });
   const responseQuery = useLogin(username, password);
+  const router = useRouter();
 
   const submitForm = () => {
     if (!username) {
@@ -28,9 +31,20 @@ const SignIn: React.FC = () => {
       setValidPass({ error: false, message: '' });
     }
     responseQuery.refetch();
+  };
+
+  useEffect(() => {
     setUsername('');
     setPassword('');
-  };
+    if (responseQuery.isSuccess) {
+      try {
+        Cookies.set("authToken", responseQuery.data?.token);
+        router.push("/dashboard");
+      } catch (error) {
+        console.log('CONTEXT USE EFFECT', error)
+      }
+    }
+  }, [responseQuery.isSuccess])
 
 
   return (
@@ -75,6 +89,8 @@ const SignIn: React.FC = () => {
                         error={validUsername.error}
                         errorMessage={validUsername.message}
                         placeholder="Ingrese su nombre de usuario"
+                        type="email"
+                        autoComplete="email"
                         onChange={({ target }) => { setUsername(target.value); }}
                         className={`w-full rounded-lg ${!validUsername.error && 'border border-stroke'} bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       />

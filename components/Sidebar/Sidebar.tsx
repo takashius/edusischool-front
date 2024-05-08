@@ -46,7 +46,7 @@ const Sidebar = ({ }: SidebarProps) => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="relative flex w-full items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-        <Link className="flex items-center" href="/">
+        <Link className="flex items-center" href="/dashboard">
           <Image
             className="h-6 w-6 rounded-md"
             width={400}
@@ -81,7 +81,7 @@ const Sidebar = ({ }: SidebarProps) => {
                 <LinkItem
                   icon={<LayoutDashboard />}
                   title="Dashboard"
-                  href="/"
+                  href="/dashboard"
                 />
               </li>
               {/* <!-- Menu Item Dashboard --> */}
