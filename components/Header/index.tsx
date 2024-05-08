@@ -23,7 +23,7 @@ const Header = (props: {
               aria-hidden={!isSidebarOpen}
               aria-controls="sidebar"
             >
-              <MenuIcon className="h-6 w-6 text-white" />
+              <MenuIcon className="h-6 w-6 text-black dark:text-white" />
             </button>
           )}
           {/* <!-- Hamburger Toggle BTN --> */}
