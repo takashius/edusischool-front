@@ -86,91 +86,66 @@ const Sidebar = ({ }: SidebarProps) => {
               </li>
               {/* <!-- Menu Item Dashboard --> */}
 
-              {/* <!-- Menu Item Calendar --> */}
-              <li>
-                <LinkItem
-                  title="Calendar"
-                  href="/calendar"
-                  icon={<Calendar className="h-6 w-6" />}
-                ></LinkItem>
-              </li>
-
-              <li>
-                <LinkItem
-                  title="Tables"
-                  href="/tables"
-                  icon={<Table2Icon className="h-6 w-6" />}
-                ></LinkItem>
-              </li>
-
-              {/* <!-- Menu Item Tables --> */}
-
               {/* <!-- Menu Item Settings --> */}
               <li>
-                <LinkItem
-                  title="Settings"
-                  href="/settings"
-                  icon={<Settings className="h-6 w-6" />}
-                ></LinkItem>
-              </li>
-
-              {/* <!-- Menu Item Settings --> */}
-              <li>
-                <LinkItem
-                  title="Profile"
-                  href="/profile"
-                  icon={<User2Icon className="h-6 w-6" />}
-                ></LinkItem>
-              </li>
-
-              {/* <!-- Menu Item Chart --> */}
-              <li>
-                <LinkItem
-                  title="Charts"
-                  href="/chart"
-                  icon={<BarChart2 className="h-6 w-6" />}
-                ></LinkItem>
-              </li>
-
-              {/* <!-- Menu Item Chart --> */}
-
-              {/* <!-- Menu Item Ui Elements --> */}
-
-              {/* <!-- Dropdown Menu Start --> */}
-              <li>
-                <ExpandMenu icon={<Component className="h-6 w-6" />} name="UI">
+                <ExpandMenu icon={<Settings className="h-6 w-6" />} name="Config">
                   <LinkItem
-                    title="Alerts"
-                    href="/ui/alerts"
-                    icon={<AlertCircle className="h-5 w-5" />}
-                  ></LinkItem>
-                  <LinkItem
-                    title="Buttons"
-                    href="/ui/buttons"
-                    icon={<MousePointerClick className="h-5 w-5" />}
-                  />
-                </ExpandMenu>
-              </li>
-
-              {/* <!-- Menu Item Ui Elements --> */}
-
-              {/* <!-- Menu Item Auth Pages --> */}
-              <li>
-                <ExpandMenu name="Auth" icon={<LampIcon className="h-6 w-6" />}>
-                  <LinkItem
-                    title="Sign In"
-                    href="/login"
-                    icon={<LockIcon className="h-5 w-5" />}
-                  ></LinkItem>
-                  <LinkItem
-                    title="Sign up"
-                    href="/signup"
-                    icon={<SignalHigh className="h-5 w-5" />}
+                    title="Study Plan"
+                    href="/studyplan"
+                    icon={<User2Icon className="h-5 w-5" />}
                   ></LinkItem>
                 </ExpandMenu>
               </li>
 
-              {/* <!-- Menu Item Auth Pages --> */}
+              {/* <!-- Menu Item OLD ELEMENTS --> */}
+              <li>
+                <ExpandMenu icon={<AlertCircle className="h-6 w-6" />} name="Old Elements">
+                  <LinkItem
+                    title="Tables"
+                    href="/tables"
+                    icon={<Table2Icon className="h-6 w-6" />}
+                  ></LinkItem>
+                  <LinkItem
+                    title="Settings"
+                    href="/settings"
+                    icon={<Settings className="h-6 w-6" />}
+                  ></LinkItem>
+                  <LinkItem
+                    title="Profile"
+                    href="/profile"
+                    icon={<User2Icon className="h-6 w-6" />}
+                  ></LinkItem>
+                  <LinkItem
+                    title="Charts"
+                    href="/chart"
+                    icon={<BarChart2 className="h-6 w-6" />}
+                  ></LinkItem>
+                  <ExpandMenu icon={<Component className="h-6 w-6" />} name="UI">
+                    <LinkItem
+                      title="Alerts"
+                      href="/ui/alerts"
+                      icon={<AlertCircle className="h-5 w-5" />}
+                    ></LinkItem>
+                    <LinkItem
+                      title="Buttons"
+                      href="/ui/buttons"
+                      icon={<MousePointerClick className="h-5 w-5" />}
+                    />
+                  </ExpandMenu>
+                  <ExpandMenu name="Auth" icon={<LampIcon className="h-6 w-6" />}>
+                    <LinkItem
+                      title="Sign In"
+                      href="/login"
+                      icon={<LockIcon className="h-5 w-5" />}
+                    ></LinkItem>
+                    <LinkItem
+                      title="Sign up"
+                      href="/signup"
+                      icon={<SignalHigh className="h-5 w-5" />}
+                    ></LinkItem>
+                  </ExpandMenu>
+                </ExpandMenu>
+              </li>
             </ul>
           </div>
         </nav>
