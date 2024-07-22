@@ -1,22 +1,9 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import ERDEAxios from "./ERDEAxios";
-import { StudyPlanType } from "@/types/studyPlan";
-
-export const useStudyPlanListOld = (pattern?: string) => {
-  const query = useInfiniteQuery<StudyPlanType>({
-    queryKey: ["studyPlanList", pattern],
-    networkMode: 'offlineFirst',
-    initialPageParam: 1,
-    queryFn: async ({ pageParam = 0 }) => {
-      return ERDEAxios.get(`/studyPlan/list/${pageParam}/${pattern}`);
-    },
-    getNextPageParam: (lastPage) => lastPage.next,
-  });
-  return query;
-};
+import { StudyPlanResponse } from "@/types/studyPlan";
 
 export const useStudyPlanList = (pattern?: string, page: number = 1) => {
-  const query = useQuery<StudyPlanType>({
+  const query = useQuery<StudyPlanResponse>({
     queryKey: ["studyPlanList", pattern, page],
     networkMode: 'offlineFirst',
     queryFn: async () => {
