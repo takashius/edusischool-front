@@ -27,7 +27,13 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit }: paramsFormStudyPlan)
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-      <DialogPanel>
+      <DialogPanel className='relative'>
+        <Button
+          className="absolute top-2 right-2 w-8 h-8 bg-white dark:bg-transparent rounded-full border border-blue-500 hover:text-white dark:border-white text-blue-500 dark:text-white dark:hover:bg-white dark:hover:text-blue-500 flex items-center justify-center"
+          onClick={() => setIsOpen(false)}
+        >
+          X
+        </Button>
         <h3 className="text-lg font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong mb-4">
           {dataEdit?._id ? 'Editar Plan de Estudios' : 'Crear Plan de Estudios'}
         </h3>

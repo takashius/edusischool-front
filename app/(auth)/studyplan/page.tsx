@@ -42,7 +42,6 @@ const List = () => {
   }
 
   const deleteAction = (id: string) => {
-    console.log('A eliminar se ha dicho', id)
   }
 
   const IconsTable: IconsTable[] = [
