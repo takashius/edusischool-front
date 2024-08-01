@@ -21,8 +21,8 @@ const buttonView = (action: any, id: string) => (
   </button>
 )
 
-const buttonDelete = (action: any, id: string) => (
-  <button className="hover:text-primary" onClick={() => action(id)}>
+const buttonDelete = (confirm: any, action: any, id: string) => (
+  <button className="hover:text-primary" onClick={() => confirm(action, id)}>
     <svg
       className="fill-current"
       width="18"

@@ -1,7 +1,7 @@
 "use client";
 import TableThree from "@/components/Tables/TableThree";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { useStudyPlanList, useCreateStudyPlan } from "@/api/studyPlan";
+import { useStudyPlanList, useCreateStudyPlan, useUpdateStudyPlan, useDeleteStudyPlan } from "@/api/studyPlan";
 import Loader from "@/components/common/Loader";
 import { useState, useEffect } from "react";
 import { IconsTable } from "@/types/tables";
@@ -14,14 +14,18 @@ const List = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [page, setPage] = useState(1);
   const responseQuery = useStudyPlanList(pattern, page);
-  const createMutation = useCreateStudyPlan(() => {
+  const onSuccessAction = () => {
     responseQuery.refetch();
     setIsOpen(false);
-  });
+  }
+  const createMutation = useCreateStudyPlan(onSuccessAction);
+  const editMutation = useUpdateStudyPlan(onSuccessAction);
+  const deleteMutation = useDeleteStudyPlan(onSuccessAction);
   const fields = [
     { name: 'Name', input: 'name' },
     { name: 'Code', input: 'code' },
-    { name: 'Abbr', input: 'abbr' }
+    { name: 'Abbr', input: 'abbr' },
+    { name: 'Type', input: 'type.name' }
   ];
 
   useEffect(() => {
@@ -35,17 +39,11 @@ const List = () => {
         _id: ''
       });
       createMutation.reset();
+      editMutation.reset();
     }
   }, [isOpen])
 
-  useEffect(() => {
-    if (createMutation.isError) {
-      console.log('createMutation.error', createMutation.error);
-    }
-  }, [createMutation.isError]);
-
-
-  const editAction = (id: string) => {
+  const editButton = (id: string) => {
     if (responseQuery.data) {
       const itemEdit = responseQuery.data.results.find((item: StudyPlan) => item._id == id);
       if (itemEdit)
@@ -61,15 +59,12 @@ const List = () => {
     setIsOpen(true);
   }
 
-  const createAction = (data: StudyPlan) => {
-    createMutation.mutate(data);
-  }
-
-  const deleteAction = (id: string) => {
-  }
+  const createAction = (data: StudyPlan) => createMutation.mutate(data);
+  const updateAction = (data: StudyPlan) => editMutation.mutate(data);
+  const deleteAction = (id: string) => deleteMutation.mutate(id);
 
   const IconsTable: IconsTable[] = [
-    { icon: 'edit', method: editAction },
+    { icon: 'edit', method: editButton },
     { icon: 'delete', method: deleteAction },
   ]
 
@@ -106,7 +101,9 @@ const List = () => {
           setIsOpen={setIsOpen}
           dataEdit={dataEdit}
           createAction={createAction}
-          errorMessage={createMutation.isError ? getErrorMessage(createMutation.error) : ''}
+          updateAction={updateAction}
+          errorMessage={createMutation.isError ? getErrorMessage(createMutation.error) :
+            editMutation.isError ? getErrorMessage(editMutation.error) : ''}
         />
         {responseQuery.isError && <p>{`${responseQuery.error.message}`}</p>}
 

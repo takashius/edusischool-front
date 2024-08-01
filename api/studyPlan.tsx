@@ -50,21 +50,31 @@ export const useCreateStudyPlan = (onSuccess: { (): void; onSuccess?: () => void
   return mutation;
 };
 
-export const useUpdateStudyPlan = () => {
+export const useUpdateStudyPlan = (onSuccess: { (): void; onSuccess?: () => void; }) => {
   const mutation = useMutation({
     mutationFn: (data: StudyPlan) => {
       return ERDEAxios.patch("/studyPlan", data);
+    },
+    onSuccess: () => {
+      if (onSuccess) {
+        onSuccess();
+      }
     }
   });
 
   return mutation;
 };
 
-export const useDeleteStudyPlan = () => {
+export const useDeleteStudyPlan = (onSuccess: { (): void; onSuccess?: () => void; }) => {
   const mutation = useMutation({
     mutationFn: (id: string) => {
       return ERDEAxios.delete(`/studyPlan/${id}`);
     },
+    onSuccess: () => {
+      if (onSuccess) {
+        onSuccess();
+      }
+    }
   });
 
   return mutation;

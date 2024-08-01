@@ -10,10 +10,11 @@ interface paramsFormStudyPlan {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   dataEdit?: StudyPlanForm;
   createAction: any;
+  updateAction: any;
   errorMessage?: string;
 }
 
-export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, errorMessage }: paramsFormStudyPlan) {
+export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAction, errorMessage }: paramsFormStudyPlan) {
   const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
@@ -26,7 +27,7 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, errorMes
   const onSubmit: SubmitHandler<StudyPlanForm> = (data) => {
     setLoading(true);
     if (data._id) {
-      console.log('DATA FORM', data)
+      updateAction(data);
     } else {
       createAction(data);
     }
@@ -44,7 +45,7 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, errorMes
   }, [errorMessage])
 
   return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='z-9999'>
       <DialogPanel className='relative'>
         <Button
           className="absolute top-2 right-2 w-8 h-8 bg-white dark:bg-transparent rounded-full border border-blue-500 hover:text-white dark:border-white text-blue-500 dark:text-white dark:hover:bg-white dark:hover:text-blue-500 flex items-center justify-center"
