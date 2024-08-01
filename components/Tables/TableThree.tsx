@@ -2,9 +2,11 @@ import { useState } from "react";
 import { buttonView, buttonEdit, buttonDelete, buttonDownload } from "../ui/buttons";
 import { ParamsTable, FieldData } from "@/types/tables";
 import Confirm from "@/components/Confirm";
+import { useTranslations } from 'next-intl';
 type ActionDeleteType = (id: string) => void;
 
 const TableThree = ({ params }: { params: ParamsTable }) => {
+  const t = useTranslations("General");
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [idDelete, setIdDelete] = useState<string>('');
   const [actionDelete, setActionDelete] = useState<ActionDeleteType | undefined>(undefined);
@@ -35,8 +37,8 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
       <div className="max-w-full overflow-x-auto">
         {showConfirm && (
           <Confirm
-            title="Confirmar Acción"
-            message="¿Estás seguro de que deseas ejecutar esta acción?"
+            title={t('confirm.title')}
+            message={t('confirm.message')}
             onConfirm={handleConfirm}
           />
         )}
@@ -49,7 +51,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 </th>
               ))}
               <th className="min-w-[60px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                Actions
+                {t('actions')}
               </th>
             </tr>
           </thead>

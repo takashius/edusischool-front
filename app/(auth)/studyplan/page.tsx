@@ -15,7 +15,7 @@ const List = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [page, setPage] = useState(1);
   const responseQuery = useStudyPlanList(pattern, page);
-  const t = useTranslations('HomePage');
+  const t = useTranslations();
   const onSuccessAction = () => {
     responseQuery.refetch();
     setIsOpen(false);
@@ -24,10 +24,10 @@ const List = () => {
   const editMutation = useUpdateStudyPlan(onSuccessAction);
   const deleteMutation = useDeleteStudyPlan(onSuccessAction);
   const fields = [
-    { name: 'Name', input: 'name' },
-    { name: 'Code', input: 'code' },
-    { name: 'Abbr', input: 'abbr' },
-    { name: 'Type', input: 'type.name' }
+    { name: t('General.name'), input: 'name' },
+    { name: t('General.code'), input: 'code' },
+    { name: t("StudyPlan.abbr"), input: 'abbr' },
+    { name: t('General.type'), input: 'type.name' }
   ];
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const List = () => {
 
   const buttonAdd = {
     use: true,
-    title: 'Add Study Plan',
+    title: t("General.addNew"),
     setOpenDialog: setIsOpen
   }
 
@@ -94,7 +94,7 @@ const List = () => {
 
   return (
     <>
-      <Breadcrumb pageName={t('title')} button={buttonAdd} />
+      <Breadcrumb pageName={t('StudyPlan.title')} button={buttonAdd} />
 
       <div className="flex flex-col gap-10">
         {responseQuery.isFetching || createMutation.isPending && <Loader />}

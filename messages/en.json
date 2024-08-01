@@ -1,5 +1,37 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "General": {
+    "title": "Title",
+    "name": "Name",
+    "code": "Code",
+    "type": "Type",
+    "actions": "Actions",
+    "submit": "Submit",
+    "addNew": "Add New",
+    "selectOne": "Select one",
+    "confirm": {
+      "title": "Confirm Action",
+      "message": "Are you sure you want to perform this action?"
+    },
+    "Required": {
+      "name": "Name is required",
+      "code": "Code is required",
+      "type": "Type is required"
+    }
+  },
+  "Menu": {
+    "title": "Admin School",
+    "dashboard": "Dashboard",
+    "config": "Config",
+    "studyPlan": "Study Plan",
+    "old": "Old Elements"
+  },
+  "StudyPlan": {
+    "title": "Study Plan",
+    "abbr": "Abbreviation",
+    "mention": "Mention",
+    "Required": {
+      "abbr": "Abbreviation is required",
+      "mention": "Mention is required"
+    }
   }
 }

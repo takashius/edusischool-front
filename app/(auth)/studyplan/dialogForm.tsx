@@ -4,6 +4,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { Text } from '@radix-ui/themes';
 import { StudyPlanForm } from '@/types/studyPlan';
 import { ErrorAlert } from "@/components/Alerts/Alert";
+import { useTranslations } from 'next-intl';
 
 interface paramsFormStudyPlan {
   isOpen: boolean;
@@ -15,6 +16,7 @@ interface paramsFormStudyPlan {
 }
 
 export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAction, errorMessage }: paramsFormStudyPlan) {
+  const t = useTranslations();
   const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
@@ -59,49 +61,55 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
         {ErrorAlert({ message: errorMessage, active: errorMessage != '' ? true : false })}
         <form onSubmit={handleSubmit(onSubmit)} className="mx-auto max-w-sm space-y-4">
           <div>
-            <Text as="label">Nombre.</Text>
+            <Text as="label">{t("General.name")}.</Text>
             <TextInput
-              placeholder='Nombre'
+              placeholder={t("General.name")}
               error={errors.name && true}
-              errorMessage="El nombre es requerido"
+              errorMessage={t("General.Required.name")}
               {...register("name", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">Codigo.</Text>
+            <Text as="label">{t("General.code")}.</Text>
             <TextInput
-              placeholder='Codigo'
+              placeholder={t("General.code")}
               error={errors.code && true}
-              errorMessage="El codigo es requerido"
+              errorMessage={t("General.Required.code")}
               {...register("code", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">Abreviatura.</Text>
+            <Text as="label">{t("StudyPlan.abbr")}.</Text>
             <TextInput
-              placeholder='Abreviatura'
+              placeholder={t("StudyPlan.abbr")}
               error={errors.abbr && true}
-              errorMessage="La abreviatura es requerido"
+              errorMessage={t("StudyPlan.Required.abbr")}
               {...register("abbr", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">Mencion.</Text>
+            <Text as="label">{t("StudyPlan.mention")}.</Text>
             <TextInput
-              placeholder='Mencion'
+              placeholder={t("StudyPlan.mention")}
               error={errors.mention && true}
-              errorMessage="La mencion es requerido"
+              errorMessage={t("StudyPlan.Required.mention")}
               {...register("mention", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">Tipo.</Text>
+            <Text as="label">{t("General.type")}.</Text>
             <Controller
               name="type"
               control={control}
+              rules={{ required: t("General.Required.type") }}
               defaultValue={dataEdit?.type || ''}
               render={({ field }) => (
-                <Select placeholder='Selecciona Uno' {...field}>
+                <Select
+                  placeholder={t("General.selectOne")}
+                  {...field}
+                  error={!!errors.type}
+                  errorMessage={t("General.Required.type")}
+                >
                   <SelectItem value="PRE">PREESCOLAR</SelectItem>
                   <SelectItem value="EBASICA">PRIMARIA</SelectItem>
                   <SelectItem value="EMEDIA">MEDIA GENERAL</SelectItem>
@@ -111,7 +119,7 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
           </div>
 
           <Button type="submit" className="mt-8 w-full" loading={loading}>
-            Submit
+            {t("General.submit")}
           </Button>
         </form>
       </DialogPanel>

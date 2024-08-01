@@ -1,5 +1,37 @@
 {
-  "HomePage": {
-    "title": "Hola Mundo!"
+  "General": {
+    "title": "Titulo",
+    "name": "Nombre",
+    "code": "Código",
+    "type": "Tipo",
+    "actions": "Acciones",
+    "submit": "Enviar",
+    "addNew": "Crear",
+    "selectOne": "Seleccione uno",
+    "confirm": {
+      "title": "Confirmar Acción",
+      "message": "¿Estás seguro de que deseas realizar esta acción?"
+    },
+    "Required": {
+      "name": "El nombre es requerido",
+      "code": "El código es requerido",
+      "type": "El tipo es requerido"
+    }
+  },
+  "Menu": {
+    "title": "Admin School",
+    "dashboard": "Dashboard",
+    "config": "Configuración",
+    "studyPlan": "Plan de Estudios",
+    "old": "Items antiguos"
+  },
+  "StudyPlan": {
+    "title": "Planes de Estudios",
+    "abbr": "Abreviatura",
+    "mention": "Mencion",
+    "Required": {
+      "abbr": "La Abreviatura es requerida",
+      "mention": "La mencion es requerida"
+    }
   }
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Dispatch, SetStateAction } from 'react';
+import { useTranslations } from 'next-intl';
 interface BrButton {
   use: boolean;
   title: string;
@@ -11,6 +12,7 @@ interface BreadcrumbProps {
 }
 
 const Breadcrumb = ({ pageName, button }: BreadcrumbProps) => {
+  const t = useTranslations("Menu");
   return (
     <>
       <div className="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -21,7 +23,7 @@ const Breadcrumb = ({ pageName, button }: BreadcrumbProps) => {
           <ol className="flex items-center gap-2">
             <li>
               <Link className="font-medium" href="/">
-                Dashboard /
+                {t('dashboard')} /
               </Link>
             </li>
             <li className="font-medium text-primary">{pageName}</li>

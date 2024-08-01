@@ -28,10 +28,12 @@ import { cn } from "@/app/libs/utlis";
 import MenuItem from "./MenuItem";
 import LinkItem from "./LinkItem";
 import ExpandMenu from "./ExpandMenu";
+import { useTranslations } from 'next-intl';
 
 interface SidebarProps { }
 
 const Sidebar = ({ }: SidebarProps) => {
+  const t = useTranslations("Menu");
   const pathname = usePathname();
   const { isSidebarOpen, toggleSidebar } = useSidebar((state) => state);
 
@@ -56,7 +58,7 @@ const Sidebar = ({ }: SidebarProps) => {
           />
           {isSidebarOpen && (
             <h1 className=" ml-2 text-xl font-semibold text-white">
-              ShakibAdmin
+              {t('title')}
             </h1>
           )}
         </Link>
@@ -80,7 +82,7 @@ const Sidebar = ({ }: SidebarProps) => {
               <li>
                 <LinkItem
                   icon={<LayoutDashboard />}
-                  title="Dashboard"
+                  title={t('dashboard')}
                   href="/dashboard"
                 />
               </li>
@@ -88,9 +90,9 @@ const Sidebar = ({ }: SidebarProps) => {
 
               {/* <!-- Menu Item Settings --> */}
               <li>
-                <ExpandMenu icon={<Settings className="h-6 w-6" />} name="Config">
+                <ExpandMenu icon={<Settings className="h-6 w-6" />} name={t('config')}>
                   <LinkItem
-                    title="Study Plan"
+                    title={t('studyPlan')}
                     href="/studyplan"
                     icon={<User2Icon className="h-5 w-5" />}
                   ></LinkItem>
@@ -99,7 +101,7 @@ const Sidebar = ({ }: SidebarProps) => {
 
               {/* <!-- Menu Item OLD ELEMENTS --> */}
               <li>
-                <ExpandMenu icon={<AlertCircle className="h-6 w-6" />} name="Old Elements">
+                <ExpandMenu icon={<AlertCircle className="h-6 w-6" />} name={t('old')}>
                   <LinkItem
                     title="Tables"
                     href="/tables"
