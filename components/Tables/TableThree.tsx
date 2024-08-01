@@ -56,8 +56,8 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
           <tbody>
             {itemsData.results.map((data: any) => (
               <tr key={data._id}>
-                {fields?.map((field: FieldData) => (
-                  <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
+                {fields?.map((field: FieldData, index) => (
+                  <td key={index} className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                     <p className="text-sm">{getNestedValue(data, field.input)}</p>
                   </td>
                 ))}
@@ -80,7 +80,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
               </tr>
             ))}
             {!itemsData.results && <tr>
-              <th colSpan={fields.length + 1} className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
+              <th key={0} colSpan={fields.length + 1} className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                 No hay resultados
               </th>
             </tr>}
@@ -90,7 +90,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
       <div className="w-full row-auto">
         <nav aria-label="Page navigation example" className="text-right mb-3 mt-4">
           <ul className="inline-flex -space-x-px text-base h-10">
-            <li>
+            <li key={'prev'}>
               <a
                 className={paginateStyles + " rounded-s-lg border-e-0" + (itemsData.currentPage != 1 ? ' cursor-pointer' : ' cursor-not-allowed')}
                 onClick={() => {
@@ -108,7 +108,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 </a>
               </li>
             ))}
-            <li>
+            <li key={'next'}>
               <a
                 className={paginateStyles + ' rounded-e-lg' + (itemsData.next ? ' cursor-pointer' : ' cursor-not-allowed')}
                 onClick={() => {
