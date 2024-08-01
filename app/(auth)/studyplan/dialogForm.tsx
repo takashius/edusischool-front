@@ -1,29 +1,47 @@
-import { Button, Dialog, DialogPanel, TextInput } from '@tremor/react';
+import { Button, Dialog, DialogPanel, TextInput, Select, SelectItem } from '@tremor/react';
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { Text } from '@radix-ui/themes';
-import { StudyPlanType } from '@/types/studyPlan';
+import { StudyPlanForm } from '@/types/studyPlan';
+import { ErrorAlert } from "@/components/Alerts/Alert";
 
 interface paramsFormStudyPlan {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  dataEdit?: StudyPlanType
+  dataEdit?: StudyPlanForm;
+  createAction: any;
+  errorMessage?: string;
 }
 
-export function DialogForm({ isOpen, setIsOpen, dataEdit }: paramsFormStudyPlan) {
+export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, errorMessage }: paramsFormStudyPlan) {
   const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
-  } = useForm<StudyPlanType>({ defaultValues: dataEdit })
-  const onSubmit: SubmitHandler<StudyPlanType> = (data) => { console.log(data); setLoading(true); }
+    reset,
+    control
+  } = useForm<StudyPlanForm>({ defaultValues: dataEdit });
+
+  const onSubmit: SubmitHandler<StudyPlanForm> = (data) => {
+    setLoading(true);
+    if (data._id) {
+      console.log('DATA FORM', data)
+    } else {
+      createAction(data);
+    }
+  }
 
   useEffect(() => {
     reset(dataEdit);
     setLoading(false);
-  }, [isOpen])
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (errorMessage !== '') {
+      setLoading(false);
+    }
+  }, [errorMessage])
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
@@ -37,6 +55,7 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit }: paramsFormStudyPlan)
         <h3 className="text-lg font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong mb-4">
           {dataEdit?._id ? 'Editar Plan de Estudios' : 'Crear Plan de Estudios'}
         </h3>
+        {ErrorAlert({ message: errorMessage, active: errorMessage != '' ? true : false })}
         <form onSubmit={handleSubmit(onSubmit)} className="mx-auto max-w-sm space-y-4">
           <div>
             <Text as="label">Nombre.</Text>
@@ -72,6 +91,21 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit }: paramsFormStudyPlan)
               error={errors.mention && true}
               errorMessage="La mencion es requerido"
               {...register("mention", { required: true })}
+            />
+          </div>
+          <div>
+            <Text as="label">Tipo.</Text>
+            <Controller
+              name="type"
+              control={control}
+              defaultValue={dataEdit?.type || ''}
+              render={({ field }) => (
+                <Select placeholder='Selecciona Uno' {...field}>
+                  <SelectItem value="PRE">PREESCOLAR</SelectItem>
+                  <SelectItem value="EBASICA">PRIMARIA</SelectItem>
+                  <SelectItem value="EMEDIA">MEDIA GENERAL</SelectItem>
+                </Select>
+              )}
             />
           </div>
 

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 const ErrorAlert = (params: any) => {
-  const { message } = params;
-  console.log(JSON.stringify(message, null, 2))
+  const { message, active } = params;
+  // console.log(JSON.stringify(message, null, 2))
   const [errorVisible, isErrorVisible] = useState<boolean>(true);
   const [textMessage, setTextMessage] = useState<string>();
 
@@ -20,6 +20,10 @@ const ErrorAlert = (params: any) => {
       setTextMessage(message);
     }
   }, [message])
+
+  useEffect(() => {
+    isErrorVisible(active);
+  }, [active])
 
   return <span
     className={`${!errorVisible && "hidden"} flex w-full border-l-6 mb-5 border-[#F87171] bg-[#F87171] bg-opacity-[15%] px-7 py-4 shadow-md dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-4`}>

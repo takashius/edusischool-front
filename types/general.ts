@@ -20,3 +20,14 @@ export interface Register {
     companyName?: string;
     docId?: string;
 }
+
+interface UserCreated {
+    _id: string;
+    name: string;
+    lastName: string;
+}
+
+export interface Created {
+    user: UserCreated;
+    date: string;
+}
