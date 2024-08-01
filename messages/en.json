@@ -7,6 +7,8 @@
     "actions": "Actions",
     "submit": "Submit",
     "addNew": "Add New",
+    "prev": "Previous",
+    "next": "Next",
     "selectOne": "Select one",
     "confirm": {
       "title": "Confirm Action",

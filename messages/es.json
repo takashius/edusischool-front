@@ -7,6 +7,8 @@
     "actions": "Acciones",
     "submit": "Enviar",
     "addNew": "Crear",
+    "prev": "Anterior",
+    "next": "Siguiente",
     "selectOne": "Seleccione uno",
     "confirm": {
       "title": "Confirmar Acción",

@@ -98,7 +98,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 onClick={() => {
                   if (parseInt(itemsData.currentPage) != 1) setPage(parseInt(itemsData.currentPage) - 1);
                 }}
-              >Previous</a>
+              >{t("prev")}</a>
             </li>
             {[...Array(itemsData.totalPages)].map((page, index) => (
               <li key={index}>
@@ -115,7 +115,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 className={paginateStyles + ' rounded-e-lg' + (itemsData.next ? ' cursor-pointer' : ' cursor-not-allowed')}
                 onClick={() => {
                   if (itemsData.next) setPage(parseInt(itemsData.currentPage) + 1);
-                }}>Next</a>
+                }}>{t("next")}</a>
             </li>
           </ul>
         </nav>
