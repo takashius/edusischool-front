@@ -43,8 +43,8 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
-              {fields?.map((field: FieldData) => (
-                <th className="min-w-[60px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+              {fields?.map((field: FieldData, index) => (
+                <th key={index} className="min-w-[60px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                   {field.name}
                 </th>
               ))}
@@ -99,7 +99,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
               >Previous</a>
             </li>
             {[...Array(itemsData.totalPages)].map((page, index) => (
-              <li>
+              <li key={index}>
                 <a
                   className={(itemsData.currentPage == index + 1 ? paginateStylesSelected + ' cursor-default' : paginateStyles + ' cursor-pointer') + ' border-e-0'}
                   onClick={() => setPage(index + 1)}

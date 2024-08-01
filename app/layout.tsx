@@ -1,19 +1,21 @@
+import { ReactNode } from "react";
 import { ReactQueryProvider } from "./react-query-provider";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import "./globals.css";
 import "./data-tables-css.css";
 import "./satoshi.css";
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
-  // const locale = await getLocale();
   const messages = await getMessages();
+  const locale = await getLocale();
+
   return (
-    <html lang="es">
+    <html lang={locale}>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider messages={messages}>
           <ReactQueryProvider>

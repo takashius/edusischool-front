@@ -15,7 +15,7 @@ export default function Page() {
       Cookies.remove("authToken", { path: '/' });
       router.push("/login");
     }
-  }, [isSuccess, isError, isFetched]);
+  }, [isSuccess, isError, isFetched, router]);
 
   return <Loader />;
 }
