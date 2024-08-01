@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownMessage from "./DropdownMessage";
+import LanguageSwitcher from "./LanguageSwitcher";
 import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
 import Image from "next/image";
@@ -79,6 +80,10 @@ const Header = (props: {
             {/* <!-- Dark Mode Toggler --> */}
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}
+
+            {/* <!-- Language Switcher Area --> */}
+            <LanguageSwitcher />
+            {/* <!-- Language Switcher Area --> */}
 
             {/* <!-- Notification Menu Area --> */}
             <DropdownNotification />
