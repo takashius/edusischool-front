@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { IconsTable } from "@/types/tables";
 import { DialogForm } from "./dialogForm";
 import { StudyPlan, StudyPlanForm } from "@/types/studyPlan";
+import { useTranslations } from 'next-intl';
 
 const List = () => {
   const [pattern, setPattern] = useState<string>('');
@@ -14,6 +15,7 @@ const List = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [page, setPage] = useState(1);
   const responseQuery = useStudyPlanList(pattern, page);
+  const t = useTranslations('HomePage');
   const onSuccessAction = () => {
     responseQuery.refetch();
     setIsOpen(false);
@@ -92,7 +94,7 @@ const List = () => {
 
   return (
     <>
-      <Breadcrumb pageName="Study Plan List" button={buttonAdd} />
+      <Breadcrumb pageName={t('title')} button={buttonAdd} />
 
       <div className="flex flex-col gap-10">
         {responseQuery.isFetching || createMutation.isPending && <Loader />}

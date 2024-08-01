@@ -33,6 +33,7 @@
     "jsvectormap": "^1.5.3",
     "lucide-react": "^0.292.0",
     "next": "latest",
+    "next-intl": "^3.17.2",
     "postcss": "8.4.27",
     "react": "latest",
     "react-apexcharts": "^1.4.1",

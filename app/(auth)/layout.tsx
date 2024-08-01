@@ -11,7 +11,6 @@ interface LayoutProps {
 
 export default function RootLayout({ children, params }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
