@@ -65,16 +65,16 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 ))}
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
-                    {icons.map(item => {
+                    {icons.map((item, index) => {
                       switch (item.icon) {
                         case 'view':
-                          return buttonView(item.method, data._id);
+                          return <span key={index}>{buttonView(item.method, data._id)}</span>;
                         case 'edit':
-                          return buttonEdit(item.method, data._id);
+                          return <span key={index}>{buttonEdit(item.method, data._id)}</span>;
                         case 'delete':
-                          return buttonDelete(openConfirm, item.method, data._id);
+                          return <span key={index}>{buttonDelete(openConfirm, item.method, data._id)}</span>;
                         case 'download':
-                          return buttonDownload(item.method, data._id);
+                          return <span key={index}>{buttonDownload(item.method, data._id)}</span>;
                       }
                     })}
                   </div>

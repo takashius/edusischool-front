@@ -2,6 +2,7 @@ export interface Account {
     _id: string
     name: string
     lastName: string
+    photo: string
     phone: string
     email: string
     date: string

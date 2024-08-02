@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ERDEAxios from "./ERDEAxios";
-import { StudyPlan, StudyPlanResponse, StudyPlanSimple, StudyPlanSingle } from "@/types/studyPlan";
+import { StudyPlan, StudyPlanResponse, StudyPlanSimple, StudyPlanSingle, StudyPlanTypes } from "@/types/studyPlan";
 
 export const useStudyPlanList = (pattern?: string, page: number = 1) => {
   const query = useQuery<StudyPlanResponse>({
@@ -19,6 +19,17 @@ export const useListSimpleStudyPlan = () => {
     retry: false,
     queryFn: () => {
       return ERDEAxios.get("/studyPlan/simple");
+    },
+  });
+  return query;
+};
+
+export const useListTypes = () => {
+  const query = useQuery<StudyPlanTypes[]>({
+    queryKey: ["studyPlanTypes"],
+    retry: false,
+    queryFn: () => {
+      return ERDEAxios.get("/studyPlan/types");
     },
   });
   return query;

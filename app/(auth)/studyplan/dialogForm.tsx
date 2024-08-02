@@ -5,6 +5,7 @@ import { Text } from '@radix-ui/themes';
 import { StudyPlanForm } from '@/types/studyPlan';
 import { ErrorAlert } from "@/components/Alerts/Alert";
 import { useTranslations } from 'next-intl';
+import { useListTypes } from '@/api/studyPlan';
 
 interface paramsFormStudyPlan {
   isOpen: boolean;
@@ -25,6 +26,8 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
     reset,
     control
   } = useForm<StudyPlanForm>({ defaultValues: dataEdit });
+
+  const queryTypes = useListTypes();
 
   const onSubmit: SubmitHandler<StudyPlanForm> = (data) => {
     setLoading(true);
@@ -110,9 +113,9 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
                   error={!!errors.type}
                   errorMessage={t("General.Required.type")}
                 >
-                  <SelectItem value="PRE">PREESCOLAR</SelectItem>
-                  <SelectItem value="EBASICA">PRIMARIA</SelectItem>
-                  <SelectItem value="EMEDIA">MEDIA GENERAL</SelectItem>
+                  {queryTypes.isSuccess && queryTypes.data.map((item, index) => (
+                    <SelectItem key={index} value={item.code}>{item.name}</SelectItem>
+                  ))}
                 </Select>
               )}
             />

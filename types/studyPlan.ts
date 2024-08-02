@@ -33,7 +33,13 @@ export interface StudyPlanResponse {
 export interface StudyPlanSimple {
   id: string;
   name: string;
-  created: Created
+  created: Created;
+}
+
+export interface StudyPlanTypes {
+  _id: string;
+  code: string;
+  name: string;
 }
 
 export interface StudyPlanType {

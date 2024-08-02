@@ -20,6 +20,11 @@
       "type": "Type is required"
     }
   },
+  "Auth": {
+    "myProfile": "My Profile",
+    "settings": "Account Settings",
+    "logout": "Log Out"
+  },
   "Menu": {
     "title": "Admin School",
     "dashboard": "Dashboard",

@@ -20,6 +20,11 @@
       "type": "El tipo es requerido"
     }
   },
+  "Auth": {
+    "myProfile": "Mi perfil",
+    "settings": "Ajustes de usuario",
+    "logout": "Cerrar sesion"
+  },
   "Menu": {
     "title": "Admin School",
     "dashboard": "Dashboard",
