@@ -81,7 +81,7 @@ const TableThree = ({ params }: { params: ParamsTable }) => {
                 </td>
               </tr>
             ))}
-            {!itemsData.results && <tr>
+            {!itemsData.results.length && <tr>
               <th key={0} colSpan={fields.length + 1} className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                 No hay resultados
               </th>
