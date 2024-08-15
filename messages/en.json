@@ -13,6 +13,7 @@
     "update": "Update",
     "delete": "Delete",
     "cancel": "Cancel",
+    "noResults": "No results found",
     "selectOne": "Select one",
     "confirm": {
       "title": "Confirm Action",
@@ -29,8 +30,8 @@
     "settings": "Account Settings",
     "logout": "Log Out",
     "personalInformation": "Personal Information",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Name LastName",
+    "name": "Name",
+    "lastName": "LastName",
     "phone": "Phone Number",
     "email": "Email Address",
     "bio": "BIO",
@@ -47,6 +48,7 @@
     "dashboard": "Dashboard",
     "config": "Config",
     "studyPlan": "Study Plan",
+    "subjectType": "Subject Type",
     "old": "Old Elements"
   },
   "StudyPlan": {
@@ -57,5 +59,10 @@
       "abbr": "Abbreviation is required",
       "mention": "Mention is required"
     }
+  },
+  "SubjectType": {
+    "title": "Subject Type",
+    "titleEdit": "Edit subject type",
+    "titleAdd": "Create subject type"
   }
 }

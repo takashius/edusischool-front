@@ -64,6 +64,16 @@ export const useRegister = () => {
   return mutation;
 };
 
+export const useUpdateProfile = () => {
+  const mutation = useMutation({
+    mutationFn: (data: Account) => {
+      return ERDEAxios.patch("/user/profile", data);
+    }
+  });
+
+  return mutation;
+};
+
 export const useSelectCompany = () => {
   const mutation = useMutation({
     mutationFn: (data: SetCompany) => {

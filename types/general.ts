@@ -1,14 +1,14 @@
 export interface Account {
-    address: string | number | readonly string[] | undefined
-    bio: string | number | readonly string[] | undefined
-    _id: string
-    name: string
-    lastName: string
-    photo: string
-    phone: string
-    email: string
-    date: string
-    companies: CompanyAccount[]
+    address?: string | undefined
+    bio: string | undefined
+    _id?: string
+    name: string | undefined
+    lastName: string | undefined
+    photo?: string
+    phone: string | undefined
+    email?: string
+    date?: string
+    companies?: CompanyAccount[]
 }
 
 export interface CompanyAccount {

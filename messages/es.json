@@ -13,6 +13,7 @@
     "update": "Actualizar",
     "delete": "Borrar",
     "cancel": "Cancelar",
+    "noResults": "No hay resultados",
     "selectOne": "Seleccione uno",
     "confirm": {
       "title": "Confirmar Acción",
@@ -29,8 +30,8 @@
     "settings": "Ajustes de usuario",
     "logout": "Cerrar sesion",
     "personalInformation": "Información Personal",
-    "fullName": "Nombre Completo",
-    "fullNamePlaceholder": "Nombre y Apellido",
+    "name": "Nombre",
+    "lastName": "Apellido",
     "phone": "Numero de teléfono",
     "email": "Correo electrónico",
     "bio": "BIO",
@@ -47,6 +48,7 @@
     "dashboard": "Dashboard",
     "config": "Configuración",
     "studyPlan": "Plan de Estudios",
+    "subjectType": "Tipo de Asignatura",
     "old": "Items antiguos"
   },
   "StudyPlan": {
@@ -57,5 +59,10 @@
       "abbr": "La Abreviatura es requerida",
       "mention": "La mencion es requerida"
     }
+  },
+  "SubjectType": {
+    "title": "Tipo de Asignatura",
+    "titleEdit": "Editar tipo de asignatura",
+    "titleAdd": "Crear tipo de asignatura"
   }
 }

@@ -19,7 +19,7 @@ import {
   LampIcon,
   SignalHigh,
   AlertCircle,
-  SwissFranc,
+  FileType2,
   MousePointerClick,
   LayoutDashboard
 } from "lucide-react";
@@ -95,6 +95,11 @@ const Sidebar = ({ }: SidebarProps) => {
                     title={t('studyPlan')}
                     href="/studyplan"
                     icon={<User2Icon className="h-5 w-5" />}
+                  ></LinkItem>
+                  <LinkItem
+                    title={t('subjectType')}
+                    href="/subjectType"
+                    icon={<FileType2 className="h-5 w-5" />}
                   ></LinkItem>
                 </ExpandMenu>
               </li>
