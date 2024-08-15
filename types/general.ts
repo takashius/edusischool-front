@@ -1,4 +1,6 @@
 export interface Account {
+    address: string | number | readonly string[] | undefined
+    bio: string | number | readonly string[] | undefined
     _id: string
     name: string
     lastName: string

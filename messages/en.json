@@ -9,6 +9,10 @@
     "addNew": "Add New",
     "prev": "Previous",
     "next": "Next",
+    "accept": "Accept",
+    "update": "Update",
+    "delete": "Delete",
+    "cancel": "Cancel",
     "selectOne": "Select one",
     "confirm": {
       "title": "Confirm Action",
@@ -23,7 +27,20 @@
   "Auth": {
     "myProfile": "My Profile",
     "settings": "Account Settings",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "personalInformation": "Personal Information",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Name LastName",
+    "phone": "Phone Number",
+    "email": "Email Address",
+    "bio": "BIO",
+    "bioPlaceholder": "Write your bio here",
+    "address": "ADDRESS",
+    "addressPlaceholder": "Write your address here",
+    "photo": "Your Photo",
+    "photoEdit": "Edit your photo",
+    "photoClick": "Click to upload",
+    "photoDrag": "or drag and drop"
   },
   "Menu": {
     "title": "Admin School",
