@@ -15,6 +15,7 @@
     "cancel": "Cancelar",
     "noResults": "No hay resultados",
     "selectOne": "Seleccione uno",
+    "fieldRequired": "El campo es obligatorio",
     "confirm": {
       "title": "Confirmar Acción",
       "message": "¿Estás seguro de que deseas realizar esta acción?"
@@ -42,6 +43,33 @@
     "photoEdit": "Edita tu foto",
     "photoClick": "Click para subir",
     "photoDrag": "o arrastra y suelta"
+  },
+  "Login": {
+    "title": "Bienvenido al sistema de gestión escolar",
+    "signIn": "Ingresar",
+    "notAccount": "¿No tienes ninguna cuenta?",
+    "user": "Usuario",
+    "userPlaceholder": "Ingrese su correo electrónico",
+    "password": "Contraseña",
+    "passPlaceholder": "Ingrese su contraseña"
+  },
+  "Register": {
+    "signUp": "Registrate",
+    "name": "Nombre",
+    "namePlaceholder": "Ingrese su nombre",
+    "email": "Correo electrónico",
+    "emailPlaceHolder": "Ingrese su correo electrónico",
+    "company": "Empresa",
+    "companyPlaceholder": "Nombre de su empresa",
+    "rif": "RIF",
+    "rifPlaceholder": "Numero de Rif",
+    "pass": "Contraseña",
+    "passPlaceholder": "Escriba su contraseña",
+    "passConfirm": "Confirmar contraseña",
+    "passConfirmPlaceholder": "Repita la contraseña",
+    "passNotMatch": "Las contraseñas deben ser iguales",
+    "createAccount": "Crear una cuenta",
+    "alreadyAccount": "¿Ya tienes una cuenta?"
   },
   "Menu": {
     "title": "Admin School",

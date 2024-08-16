@@ -15,6 +15,7 @@
     "cancel": "Cancel",
     "noResults": "No results found",
     "selectOne": "Select one",
+    "fieldRequired": "The field is required",
     "confirm": {
       "title": "Confirm Action",
       "message": "Are you sure you want to perform this action?"
@@ -42,6 +43,33 @@
     "photoEdit": "Edit your photo",
     "photoClick": "Click to upload",
     "photoDrag": "or drag and drop"
+  },
+  "Login": {
+    "title": "Welcome to the school management system",
+    "signIn": "Sign In",
+    "notAccount": "Don’t have any account?",
+    "user": "User",
+    "userPlaceholder": "Enter your email",
+    "password": "Password",
+    "passPlaceholder": "Enter your password"
+  },
+  "Register": {
+    "signUp": "Sign Up",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email",
+    "emailPlaceHolder": "Enter your email",
+    "company": "Company",
+    "companyPlaceholder": "Name of your company",
+    "rif": "RIF",
+    "rifPlaceholder": "Document ID",
+    "pass": "Password",
+    "passPlaceholder": "Enter your password",
+    "passConfirm": "Confirm Password",
+    "passConfirmPlaceholder": "Repeat password",
+    "passNotMatch": "Passwords must be the same",
+    "createAccount": "Create account",
+    "alreadyAccount": "Already have an account?"
   },
   "Menu": {
     "title": "Admin School",

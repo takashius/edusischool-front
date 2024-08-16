@@ -58,7 +58,7 @@ const DropdownUser = () => {
             className="rounded-full"
             width={112}
             height={112}
-            src={account.isSuccess ? account.data.photo : '/images/user/userDefault.jpg'}
+            src={account.isSuccess ? account.data.photo! : '/images/user/userDefault.jpg'}
             alt="User"
           />
         </span>

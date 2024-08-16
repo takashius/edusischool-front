@@ -10,8 +10,10 @@ import { ValidInput } from "@/types/validation";
 import { ErrorAlert } from "@/components/Alerts/Alert";
 import { ImageLogin } from "@/components/Images/ImageSvg";
 import Cookies from "js-cookie";
+import { useTranslations } from 'next-intl';
 
 const SignIn: React.FC = () => {
+  const t = useTranslations();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [validUsername, setValidUsername] = useState<ValidInput>({ error: false, message: '' });
@@ -21,12 +23,12 @@ const SignIn: React.FC = () => {
 
   const submitForm = () => {
     if (!username) {
-      return setValidUsername({ error: true, message: 'El campo es obligatorio' });
+      return setValidUsername({ error: true, message: t('General.fieldRequired') });
     } else {
       setValidUsername({ error: false, message: '' });
     }
     if (!password) {
-      return setValidPass({ error: true, message: 'El campo es obligatorio' });
+      return setValidPass({ error: true, message: t('General.fieldRequired') });
     } else {
       setValidPass({ error: false, message: '' });
     }
@@ -60,7 +62,7 @@ const SignIn: React.FC = () => {
               </Link>
 
               <p className="2xl:px-20">
-                Bienvenidos al sistema de gestion para escuelas
+                {t('Login.title')}
               </p>
 
               <ImageLogin />
@@ -73,7 +75,7 @@ const SignIn: React.FC = () => {
               <Loader /> :
               <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
                 <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                  Ingresar
+                  {t('Login.signIn')}
                 </h2>
                 {responseQuery.isError &&
                   <ErrorAlert message={responseQuery.error} />
@@ -82,13 +84,13 @@ const SignIn: React.FC = () => {
                 <form>
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Usuario
+                      {t('Login.user')}
                     </label>
                     <div className="relative">
                       <TextInput icon={RiUser3Fill}
                         error={validUsername.error}
                         errorMessage={validUsername.message}
-                        placeholder="Ingrese su nombre de usuario"
+                        placeholder={t('Login.userPlaceholder')}
                         type="email"
                         autoComplete="email"
                         onChange={({ target }) => { setUsername(target.value); }}
@@ -99,13 +101,13 @@ const SignIn: React.FC = () => {
 
                   <div className="mb-6">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Contraseña
+                      {t('Login.password')}
                     </label>
                     <div className="relative">
                       <TextInput
                         error={validPass.error}
                         errorMessage={validPass.message}
-                        placeholder="Escriba su contraseña"
+                        placeholder={t('Login.passPlaceholder')}
                         onChange={({ target }) => { setPassword(target.value); }}
                         type="password"
                         className="w-full rounded-lg border border-stroke bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
@@ -117,12 +119,12 @@ const SignIn: React.FC = () => {
                     <input
                       type="button"
                       onClick={submitForm}
-                      value="Sign In"
+                      value={t('Login.signIn')}
                       className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                     />
                   </div>
 
-                  <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
+                  {/* <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
                     <span>
                       <svg
                         width="20"
@@ -157,13 +159,13 @@ const SignIn: React.FC = () => {
                       </svg>
                     </span>
                     Sign in with Google
-                  </button>
+                  </button> */}
 
                   <div className="mt-6 text-center">
                     <p>
-                      Don’t have any account?{" "}
+                      {t('Login.notAccount')} {' '}
                       <Link href="/signup" className="text-primary">
-                        Sign Up
+                        {t('Register.signUp')}
                       </Link>
                     </p>
                   </div>

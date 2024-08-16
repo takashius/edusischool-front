@@ -9,9 +9,11 @@ import { TextInput } from "@tremor/react";
 import { RiUser3Fill, RiMailAddFill, RiBuilding4Fill, RiIdCardFill } from "@remixicon/react";
 import { ErrorAlert } from "@/components/Alerts/Alert";
 import Loader from "@/components/common/Loader";
+import { useTranslations } from 'next-intl';
 
 const SignUp: React.FC = () => {
   const createMutation = useRegister();
+  const t = useTranslations();
 
   const {
     register,
@@ -41,7 +43,7 @@ const SignUp: React.FC = () => {
               </Link>
 
               <p className="2xl:px-20">
-                Bienvenidos al sistema de gestion para escuelas
+                {t('Login.title')}
               </p>
 
               <ImageLogin />
@@ -52,7 +54,7 @@ const SignUp: React.FC = () => {
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Registrese para poder acceder al sistema
+                {t('Register.signUp')}
               </h2>
 
               {createMutation.isError &&
@@ -63,13 +65,13 @@ const SignUp: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Name
+                      {t('Register.name')}
                     </label>
                     <div className="relative">
                       <TextInput icon={RiUser3Fill}
                         error={errors.name?.type === 'required' ? true : false}
-                        errorMessage={errors.name?.type === 'required' ? 'Este campo es requerido' : ''}
-                        placeholder="Ingrese su nombre de usuario"
+                        errorMessage={errors.name?.type === 'required' ? t('General.fieldRequired') : ''}
+                        placeholder={t('Register.namePlaceholder')}
                         {...register("name", { required: true })}
                         className={`w-full rounded-lg bg-transparent py-2 pl-6 pr-10 outline-none focus-visible:none`}
                       />
@@ -78,14 +80,14 @@ const SignUp: React.FC = () => {
 
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Email
+                      {t('Register.email')}
                     </label>
                     <div className="relative">
                       <TextInput icon={RiMailAddFill}
                         type="email"
                         error={errors.email?.type === 'required' ? true : false}
-                        errorMessage={errors.email?.type === 'required' ? 'Este campo es requerido' : ''}
-                        placeholder="Ingrese su correo electronico"
+                        errorMessage={errors.email?.type === 'required' ? t('General.fieldRequired') : ''}
+                        placeholder={t('Register.emailPlaceHolder')}
                         {...register("email", { required: true })}
                         className={`w-full rounded-lg bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       />
@@ -94,13 +96,13 @@ const SignUp: React.FC = () => {
 
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Empresa
+                      {t('Register.company')}
                     </label>
                     <div className="relative">
                       <TextInput icon={RiBuilding4Fill}
-                        placeholder="Nombre de su empresa"
+                        placeholder={t('Register.companyPlaceholder')}
                         error={errors.companyName?.type === 'required' ? true : false}
-                        errorMessage={errors.companyName?.type === 'required' ? 'Este campo es requerido' : ''}
+                        errorMessage={errors.companyName?.type === 'required' ? t('General.fieldRequired') : ''}
                         {...register("companyName", { required: true })}
                         className={`w-full rounded-lg bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       />
@@ -109,13 +111,13 @@ const SignUp: React.FC = () => {
 
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      RIF
+                      {t('Register.rif')}
                     </label>
                     <div className="relative">
                       <TextInput icon={RiIdCardFill}
-                        placeholder="Document ID"
+                        placeholder={t('Register.rifPlaceholder')}
                         error={errors.docId?.type === 'required' ? true : false}
-                        errorMessage={errors.docId?.type === 'required' ? 'Este campo es requerido' : ''}
+                        errorMessage={errors.docId?.type === 'required' ? t('General.fieldRequired') : ''}
                         {...register("docId", { required: true })}
                         className={`w-full rounded-lg bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary`}
                       />
@@ -124,14 +126,14 @@ const SignUp: React.FC = () => {
 
                   <div className="mb-4">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Clave
+                      {t('Register.pass')}
                     </label>
                     <div className="relative">
                       <TextInput
-                        placeholder="Escriba su contraseña"
+                        placeholder={t('Register.passPlaceholder')}
                         type="password"
                         error={errors.password?.type === 'required' ? true : false}
-                        errorMessage={errors.password?.type === 'required' ? 'Este campo es requerido' : ''}
+                        errorMessage={errors.password?.type === 'required' ? t('General.fieldRequired') : ''}
                         {...register("password", { required: true })}
                         className="w-full rounded-lg border border-stroke bg-transparent py-2 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       />
@@ -140,18 +142,18 @@ const SignUp: React.FC = () => {
 
                   <div className="mb-6">
                     <label className="mb-2.5 block font-medium text-black dark:text-white">
-                      Confirme su clave
+                      {t('Register.passConfirm')}
                     </label>
                     <div className="relative">
                       <TextInput
-                        placeholder="Repita la contraseña"
+                        placeholder={t('Register.passConfirmPlaceholder')}
                         error={errors.repeatPassword ? true : false}
                         errorMessage={errors.repeatPassword && errors.repeatPassword.message}
                         type="password"
                         {...register("repeatPassword", {
                           validate: (val: string | undefined) => {
                             if (watch('password') != val) {
-                              return "Las contraseñas deben ser iguales";
+                              return t('Register.passNotMatch');
                             }
                           }
                         })}
@@ -163,12 +165,12 @@ const SignUp: React.FC = () => {
                   <div className="mb-5">
                     <input
                       type="submit"
-                      value="Create account"
+                      value={t('Register.createAccount')}
                       className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                     />
                   </div>
 
-                  <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
+                  {/* <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
                     <span>
                       <svg
                         width="20"
@@ -203,13 +205,13 @@ const SignUp: React.FC = () => {
                       </svg>
                     </span>
                     Sign up with Google
-                  </button>
+                  </button> */}
 
                   <div className="mt-6 text-center">
                     <p>
-                      Already have an account?{" "}
+                      {t('Register.alreadyAccount')}{" "}
                       <Link href="/login" className="text-primary">
-                        Sign in
+                        {t('Login.signIn')}
                       </Link>
                     </p>
                   </div>

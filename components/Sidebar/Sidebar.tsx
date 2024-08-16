@@ -96,21 +96,23 @@ const Sidebar = ({ }: SidebarProps) => {
                     href="/studyplan"
                     icon={<User2Icon className="h-5 w-5" />}
                   ></LinkItem>
-                  <LinkItem
-                    title={t('subject')}
-                    href="/subject"
-                    icon={<File className="h-5 w-5" />}
-                  ></LinkItem>
-                  <LinkItem
-                    title={t('subjectType')}
-                    href="/subjectType"
-                    icon={<FileType2 className="h-5 w-5" />}
-                  ></LinkItem>
+                  <ExpandMenu icon={<File className="h-6 w-6" />} name={t('subject')}>
+                    <LinkItem
+                      title={t('subject')}
+                      href="/subject"
+                      icon={<File className="h-5 w-5" />}
+                    ></LinkItem>
+                    <LinkItem
+                      title={t('subjectType')}
+                      href="/subjectType"
+                      icon={<FileType2 className="h-5 w-5" />}
+                    ></LinkItem>
+                  </ExpandMenu>
                 </ExpandMenu>
               </li>
 
               {/* <!-- Menu Item OLD ELEMENTS --> */}
-              <li>
+              {/* <li>
                 <ExpandMenu icon={<AlertCircle className="h-6 w-6" />} name={t('old')}>
                   <LinkItem
                     title="Tables"
@@ -157,7 +159,7 @@ const Sidebar = ({ }: SidebarProps) => {
                     ></LinkItem>
                   </ExpandMenu>
                 </ExpandMenu>
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
