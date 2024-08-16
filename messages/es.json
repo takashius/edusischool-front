@@ -48,6 +48,7 @@
     "dashboard": "Dashboard",
     "config": "Configuración",
     "studyPlan": "Plan de Estudios",
+    "subject": "Asignatura",
     "subjectType": "Tipo de Asignatura",
     "old": "Items antiguos"
   },
@@ -64,5 +65,20 @@
     "title": "Tipo de Asignatura",
     "titleEdit": "Editar tipo de asignatura",
     "titleAdd": "Crear tipo de asignatura"
+  },
+  "Subject": {
+    "title": "Asignatura",
+    "titleEdit": "Editar asignatura",
+    "titleAdd": "Crear asignatura",
+    "modality": "Modalidad",
+    "hours": "Horas",
+    "group": "Grupo",
+    "abbr": "Abreviatura",
+    "Required": {
+      "abbr": "La Abreviatura es requerida",
+      "hours": "Las horas son requeridas",
+      "group": "El grupo es requerido",
+      "modality": "La modalidad es requerida"
+    }
   }
 }

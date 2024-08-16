@@ -48,6 +48,7 @@
     "dashboard": "Dashboard",
     "config": "Config",
     "studyPlan": "Study Plan",
+    "subject": "Subject",
     "subjectType": "Subject Type",
     "old": "Old Elements"
   },
@@ -64,5 +65,20 @@
     "title": "Subject Type",
     "titleEdit": "Edit subject type",
     "titleAdd": "Create subject type"
+  },
+  "Subject": {
+    "title": "Subject",
+    "titleEdit": "Edit subject",
+    "titleAdd": "Create subject",
+    "modality": "Modality",
+    "hours": "Hours",
+    "group": "Group",
+    "abbr": "Abbreviation",
+    "Required": {
+      "abbr": "Abbreviation is required",
+      "hours": "Hours is required",
+      "group": "Group is required",
+      "modality": "Modality is required"
+    }
   }
 }

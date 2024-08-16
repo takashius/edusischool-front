@@ -15,7 +15,7 @@ import {
   Settings,
   Table2Icon,
   FormInputIcon,
-  HomeIcon,
+  File,
   LampIcon,
   SignalHigh,
   AlertCircle,
@@ -95,6 +95,11 @@ const Sidebar = ({ }: SidebarProps) => {
                     title={t('studyPlan')}
                     href="/studyplan"
                     icon={<User2Icon className="h-5 w-5" />}
+                  ></LinkItem>
+                  <LinkItem
+                    title={t('subject')}
+                    href="/subject"
+                    icon={<File className="h-5 w-5" />}
                   ></LinkItem>
                   <LinkItem
                     title={t('subjectType')}

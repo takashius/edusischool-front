@@ -226,3 +226,23 @@ span.flatpickr-weekday,
     --ring: 142.4 71.8% 29.2%;
   }
 }
+
+.react-select__placeholder {
+  color: #6b7280; /* Color de Tailwind gray-400 */
+}
+
+.react-select__single-value {
+  color: #374151; /* Color de Tailwind gray-700 */
+}
+
+.react-select__option {
+  color: #374151; /* Color de Tailwind gray-700 */
+}
+
+.react-select__option--is-selected {
+  background-color: #e5e7eb; /* Color de Tailwind gray-200 */
+}
+
+.react-select__option--is-focused {
+  background-color: #f3f4f6; /* Color de Tailwind gray-100 */
+}

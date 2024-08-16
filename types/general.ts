@@ -11,6 +11,8 @@ export interface Account {
     companies?: CompanyAccount[]
 }
 
+export type OptionType = { value: string; label: string }
+
 export interface CompanyAccount {
     selected: boolean
 }
