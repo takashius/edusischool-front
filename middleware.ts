@@ -8,11 +8,13 @@ export function middleware(request: NextRequest) {
   if (authTokens && request.nextUrl.pathname.startsWith("/login")) {
     const response = NextResponse.redirect(new URL("/", request.url));
     return response;
-  } else if (!authTokens && (request.nextUrl.pathname.startsWith("/login") || request.nextUrl.pathname.startsWith("/signup"))) {
   } else if (
-    request.nextUrl.pathname.startsWith("/") &&
-    !authTokens
+    (!authTokens &&
+      (request.nextUrl.pathname.startsWith("/login") ||
+        request.nextUrl.pathname.startsWith("/signup"))) ||
+    request.nextUrl.pathname.startsWith("/recovery")
   ) {
+  } else if (request.nextUrl.pathname.startsWith("/") && !authTokens) {
     const response = NextResponse.redirect(new URL("/login", request.url));
     response.cookies.delete("authTokens");
     return response;
@@ -23,23 +25,26 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     {
-      source: '/((?!api|_next/static|_next/image|images|favicon.ico).*)',
+      source: "/((?!api|_next/static|_next/image|images|favicon.ico).*)",
       missing: [
-        { type: 'header', key: 'next-router-prefetch' },
-        { type: 'header', key: 'purpose', value: 'prefetch' },
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
       ],
     },
     {
-      source: '/((?!api|_next/static|_next/image|images|favicon.ico).*)',
+      source: "/((?!api|_next/static|_next/image|images|favicon.ico).*)",
       has: [
-        { type: 'header', key: 'next-router-prefetch' },
-        { type: 'header', key: 'purpose', value: 'prefetch' },
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
       ],
     },
     {
-      source: '/((?!api|_next/static|_next/image|images|favicon.ico).*)',
-      has: [{ type: 'header', key: 'x-present' }],
-      missing: [{ type: 'header', key: 'x-missing', value: 'prefetch' }],
-    }, "/login", "/signup"],
-
+      source: "/((?!api|_next/static|_next/image|images|favicon.ico).*)",
+      has: [{ type: "header", key: "x-present" }],
+      missing: [{ type: "header", key: "x-missing", value: "prefetch" }],
+    },
+    "/login",
+    "/signup",
+    "/recovery",
+  ],
 };

@@ -11,7 +11,7 @@ export interface UserLogin {
 }
 
 export interface Recovery {
-  code: string;
+  code: Number;
   email: string;
   newPass: string;
 }

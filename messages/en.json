@@ -51,7 +51,15 @@
     "user": "User",
     "userPlaceholder": "Enter your email",
     "password": "Password",
-    "passPlaceholder": "Enter your password"
+    "passPlaceholder": "Enter your password",
+    "recovery": "Forgot your password?",
+    "recoveryButton": "Get it back here"
+  },
+  "Recovery": {
+    "title": "Recovery Password",
+    "subTitle": "Enter your email to recover your password",
+    "code": "Code",
+    "codePlaceholder": "Enter the code you received by email"
   },
   "Register": {
     "signUp": "Sign Up",

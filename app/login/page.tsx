@@ -78,7 +78,7 @@ const SignIn: React.FC = () => {
                   {t('Login.signIn')}
                 </h2>
                 {responseQuery.isError &&
-                  <ErrorAlert message={responseQuery.error} />
+                  <ErrorAlert message={responseQuery.error} active={true} />
                 }
 
                 <form>
@@ -166,6 +166,12 @@ const SignIn: React.FC = () => {
                       {t('Login.notAccount')} {' '}
                       <Link href="/signup" className="text-primary">
                         {t('Register.signUp')}
+                      </Link>
+                    </p>
+                    <p>
+                      {t('Login.recovery')} {' '}
+                      <Link href="/recovery/step1" className="text-primary">
+                        {t('Login.recoveryButton')}
                       </Link>
                     </p>
                   </div>
