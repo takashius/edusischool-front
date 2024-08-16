@@ -13,7 +13,9 @@ export default function Page() {
   useEffect(() => {
     if (isSuccess || isError || isFetched) {
       Cookies.remove("authToken", { path: '/' });
-      router.push("/login");
+      if (!Cookies.get("authToken")) {
+        router.push("/login");
+      }
     }
   }, [isSuccess, isError, isFetched, router]);
 

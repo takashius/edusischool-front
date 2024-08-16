@@ -1,6 +1,6 @@
-import { Register, useMutation, useQuery } from "@tanstack/react-query";
+import { Register, useMutation, useQuery, UseMutationResult } from "@tanstack/react-query";
 import ERDEAxios from "./ERDEAxios";
-import { Account } from "@/types/general";
+import { Account, LoginResponse } from "@/types/general";
 
 export interface UserLogin {
   name: string;
@@ -21,16 +21,19 @@ export interface SetCompany {
   company: string;
 }
 
-export const useLogin = (email: String, password: String) => {
-  const query = useQuery<UserLogin>({
-    queryKey: ["login"],
-    enabled: false,
-    retry: false,
-    queryFn: () => {
-      return ERDEAxios.post("/user/login", JSON.stringify({ email, password }));
-    },
+export interface Login {
+  email: string;
+  password: string;
+}
+
+export const useLogin = (): UseMutationResult<LoginResponse, unknown, Login> => {
+  const mutation = useMutation<LoginResponse, unknown, Login>({
+    mutationFn: (data: Login) => {
+      return ERDEAxios.post("/user/login", data);
+    }
   });
-  return query;
+
+  return mutation;
 };
 
 export const useAccount = () => {

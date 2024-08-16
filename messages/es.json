@@ -53,7 +53,8 @@
     "password": "Contraseña",
     "passPlaceholder": "Ingrese su contraseña",
     "recovery": "¿Olvidaste tu contraseña?",
-    "recoveryButton": "Recupérala aquí"
+    "recoveryButton": "Recupérala aquí",
+    "rememberMe": "Recordarme"
   },
   "Recovery": {
     "title": "Recuperar contraseña",

@@ -53,7 +53,8 @@
     "password": "Password",
     "passPlaceholder": "Enter your password",
     "recovery": "Forgot your password?",
-    "recoveryButton": "Get it back here"
+    "recoveryButton": "Get it back here",
+    "rememberMe": "Remember me"
   },
   "Recovery": {
     "title": "Recovery Password",
