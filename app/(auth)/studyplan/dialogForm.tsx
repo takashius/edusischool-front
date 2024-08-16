@@ -1,11 +1,13 @@
-import { Button, Dialog, DialogPanel, TextInput, Select, SelectItem } from '@tremor/react';
+import { Button, Dialog, DialogPanel, TextInput } from '@tremor/react';
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import Select from 'react-select'
 import { Text } from '@radix-ui/themes';
 import { StudyPlanForm } from '@/types/studyPlan';
 import { ErrorAlert } from "@/components/Alerts/Alert";
 import { useTranslations } from 'next-intl';
 import { useListTypes } from '@/api/studyPlan';
+import { OptionType } from '@/types/general';
 
 interface paramsFormStudyPlan {
   isOpen: boolean;
@@ -17,7 +19,8 @@ interface paramsFormStudyPlan {
 }
 
 export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAction, errorMessage }: paramsFormStudyPlan) {
-  const t = useTranslations();
+  const g = useTranslations('General');
+  const t = useTranslations('StudyPlan');
   const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
@@ -28,6 +31,12 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
   } = useForm<StudyPlanForm>({ defaultValues: dataEdit });
 
   const queryTypes = useListTypes();
+
+  let options: OptionType[] = queryTypes.isSuccess
+    ? queryTypes.data
+      .filter((item) => item.code && item.name)
+      .map((item) => ({ value: item.code!, label: item.name! }))
+    : [];
 
   const onSubmit: SubmitHandler<StudyPlanForm> = (data) => {
     setLoading(true);
@@ -59,70 +68,75 @@ export function DialogForm({ isOpen, setIsOpen, dataEdit, createAction, updateAc
           X
         </Button>
         <h3 className="text-lg font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong mb-4">
-          {dataEdit?._id ? 'Editar Plan de Estudios' : 'Crear Plan de Estudios'}
+          {dataEdit?._id ? t('titleEdit') : t('titleAdd')}
         </h3>
         {ErrorAlert({ message: errorMessage, active: errorMessage != '' ? true : false })}
         <form onSubmit={handleSubmit(onSubmit)} className="mx-auto max-w-sm space-y-4">
           <div>
-            <Text as="label">{t("General.name")}.</Text>
+            <Text as="label">{g("name")}.</Text>
             <TextInput
-              placeholder={t("General.name")}
+              placeholder={g("name")}
               error={errors.name && true}
-              errorMessage={t("General.Required.name")}
+              errorMessage={g("Required.name")}
               {...register("name", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">{t("General.code")}.</Text>
+            <Text as="label">{g("code")}.</Text>
             <TextInput
-              placeholder={t("General.code")}
+              placeholder={g("code")}
               error={errors.code && true}
-              errorMessage={t("General.Required.code")}
+              errorMessage={g("Required.code")}
               {...register("code", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">{t("StudyPlan.abbr")}.</Text>
+            <Text as="label">{t("abbr")}.</Text>
             <TextInput
-              placeholder={t("StudyPlan.abbr")}
+              placeholder={t("abbr")}
               error={errors.abbr && true}
-              errorMessage={t("StudyPlan.Required.abbr")}
+              errorMessage={t("Required.abbr")}
               {...register("abbr", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">{t("StudyPlan.mention")}.</Text>
+            <Text as="label">{t("mention")}.</Text>
             <TextInput
-              placeholder={t("StudyPlan.mention")}
+              placeholder={t("mention")}
               error={errors.mention && true}
-              errorMessage={t("StudyPlan.Required.mention")}
+              errorMessage={t("Required.mention")}
               {...register("mention", { required: true })}
             />
           </div>
           <div>
-            <Text as="label">{t("General.type")}.</Text>
+            <Text as="label">{g("type")}.</Text>
             <Controller
               name="type"
               control={control}
-              rules={{ required: t("General.Required.type") }}
+              rules={{ required: g("Required.type") }}
               defaultValue={dataEdit?.type || ''}
-              render={({ field }) => (
-                <Select
-                  placeholder={t("General.selectOne")}
-                  {...field}
-                  error={!!errors.type}
-                  errorMessage={t("General.Required.type")}
-                >
-                  {queryTypes.isSuccess && queryTypes.data.map((item, index) => (
-                    <SelectItem key={index} value={item.code}>{item.name}</SelectItem>
-                  ))}
-                </Select>
-              )}
+              render={({ field }) => {
+                const selectedOption = options.find(option => option.value === field.value) || null;
+
+                return (
+                  <div className="react-select-container text-gray-700">
+                    <Select<OptionType, false>
+                      {...field}
+                      options={options}
+                      value={selectedOption}
+                      blurInputOnSelect={true}
+                      placeholder={g("selectOne")}
+                      classNamePrefix="react-select"
+                      onChange={(selectedOption) => field.onChange(selectedOption?.value)}
+                    />
+                  </div>
+                );
+              }}
             />
           </div>
 
           <Button type="submit" className="mt-8 w-full" loading={loading}>
-            {t("General.submit")}
+            {g("submit")}
           </Button>
         </form>
       </DialogPanel>

@@ -55,6 +55,8 @@
   "StudyPlan": {
     "title": "Study Plan",
     "abbr": "Abbreviation",
+    "titleEdit": "Edit Study Plan",
+    "titleAdd": "Create Study Plan",
     "mention": "Mention",
     "Required": {
       "abbr": "Abbreviation is required",
