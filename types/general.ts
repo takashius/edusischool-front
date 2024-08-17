@@ -5,6 +5,7 @@ export interface Account {
   name: string | undefined;
   lastName: string | undefined;
   photo?: string;
+  banner?: string;
   phone: string | undefined;
   email?: string;
   date?: string;

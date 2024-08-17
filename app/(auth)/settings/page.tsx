@@ -42,7 +42,6 @@ const Settings = () => {
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const droppedFiles = Array.from(event.dataTransfer.files) as File[];
-    // console.log('handleDrop', droppedFiles)
     setFiles(droppedFiles);
   };
 
@@ -52,7 +51,6 @@ const Settings = () => {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files ? Array.from(event.target.files) : [];
-    // console.log('handleFileChange', selectedFiles)
     setFiles(selectedFiles);
   };
 
@@ -71,7 +69,6 @@ const Settings = () => {
 
   const unUpdateImage = (e: any) => {
     e.preventDefault();
-    // console.log('files', files[0])
     uploadImage.mutate({ image: files[0], imageType: files[0].type });
   }
 
