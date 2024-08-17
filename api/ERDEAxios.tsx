@@ -12,7 +12,7 @@ const ERDEAxios = axios.create();
 ERDEAxios.interceptors.request.use(
   async (config) => {
     const userToken = Cookies.get("authToken");
-    const contentType = localStorage.getItem('savedEmail');
+    const contentType = localStorage.getItem('contentType');
     if (userToken) {
       config.headers["Authorization"] = "Bearer " + userToken;
     }
