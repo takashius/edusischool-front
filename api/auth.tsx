@@ -1,4 +1,4 @@
-import { Register, useMutation, useQuery, UseMutationResult } from "@tanstack/react-query";
+import { Register, useMutation, useQuery, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 import ERDEAxios from "./ERDEAxios";
 import { Account, LoginResponse } from "@/types/general";
 
@@ -24,6 +24,11 @@ export interface SetCompany {
 export interface Login {
   email: string;
   password: string;
+}
+
+export interface Image {
+  image: any,
+  imageType: string
 }
 
 export const useLogin = (): UseMutationResult<LoginResponse, unknown, Login> => {
@@ -101,6 +106,29 @@ export const useRecoveryTwo = () => {
   const mutation = useMutation({
     mutationFn: (data: Recovery) => {
       return ERDEAxios.post("/user/recovery", data);
+    }
+  });
+
+  return mutation;
+};
+
+export const useUploadImage = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (data: Image) => {
+      localStorage.setItem('contentType', 'true');
+      var formData = new FormData();
+      formData.append("image", data.image);
+      formData.append("imageType", data.imageType);
+      return ERDEAxios.post("/user/upload", formData);
+    },
+    onSuccess: () => {
+      localStorage.removeItem('contentType');
+      queryClient.invalidateQueries({ queryKey: ['myAccount'] });
+    },
+    onError: (error) => {
+      console.log('error useUploadImage', error)
+      localStorage.removeItem('contentType');
     }
   });
 

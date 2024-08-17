@@ -11,8 +11,8 @@ const ERDEAxios = axios.create();
 // interceptor for outgoing requests
 ERDEAxios.interceptors.request.use(
   async (config) => {
-    const contentType = localStorage.getItem("contentType");
     const userToken = Cookies.get("authToken");
+    const contentType = localStorage.getItem('savedEmail');
     if (userToken) {
       config.headers["Authorization"] = "Bearer " + userToken;
     }
